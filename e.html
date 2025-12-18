@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hero Carousel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* HERO IMAGE */
+    .hero-img {
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    /* DARK OVERLAY */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1;
+    }
+
+    /* CONTENT ABOVE OVERLAY */
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV BUTTON */
+    .nav-btn {
+      border: 2px solid #f8c021;
+      color: #f8c021 !important;
+      padding: 6px 26px;
+      margin-left: 8px;
+    }
+
+    .nav-btn.active,
+    .nav-btn:hover {
+      background: #f8c021;
+      color: #000 !important;
+    }
+
+    /* CENTER TEXT */
+    .opening-box {
+      background: #f8c021;
+      color: #000;
+      font-weight: 800;
+      padding: 18px 40px;
+      letter-spacing: 2px;
+      display: inline-block;
+    }
+
+    .date-box {
+      border: 3px solid #f8c021;
+      padding: 10px 40px;
+      font-weight: bold;
+      margin-top: 8px;
+      display: inline-block;
+    }
+
+    .menu-section {
+  position: relative;
+ 
+}
+
+.menu-section img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.menu-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 120px 0 90px; /* THIS is key */
+}
+.menu-title {
+  color: #fff;
+  font-size: 42px;
+  letter-spacing: 4px;
+}
+
+.menu-box {
+  border: 2px solid #f8c021;
+  background: rgba(0,0,0,0.6);
+}
+
+.menu-head {
+  background: #f8c021;
+  color: #000;
+  font-weight: 800;
+  padding: 10px;
+  text-align: left;
+}
+
+.menu-body {
+  padding: 12px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  padding: 4px 0;
+  font-size: 15px;
+}
+
+.discount-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* background image */
+.discount-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* grill image */
+.discount-grill {
+  max-width: 420px;
+}
+
+.special-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh; 
+}
+
+/* background image */
+.special-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* yellow strip */
+.special-tag {
+  display: inline-block;
+  background: #f8c021;
+  color: #111;
+  font-weight: 800;
+  padding: 12px 20px;
+  letter-spacing: 1px;
+}
+
+/* bordered box */
+.special-box {
+  border: 4px solid #f8c021;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+  padding: 20px;
+  text-align: center;
+  max-width: 320px;
+}
+
+.method-section{
+  overflow:hidden;
+  min-height: 80vh; 
+}
+
+.method-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+/* Yellow title */
+.method-title{
+  display:inline-block;
+  background:#f8c021;
+  color:#111;
+  font-weight:800;
+  padding:12px 20px;
+  font-size:22px;
+}
+
+/* Border text box */
+.method-box{
+  border:4px solid #f8c021;
+  padding:20px;
+  color:#fff;
+  max-width:420px;
+  background:transparent;
+}
+
+.music-section{
+  overflow:hidden;
+  min-height: 80vh; 
+}
+
+.music-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+/* LIVE MUSIC yellow strip */
+.music-tag{
+  background:#f8c021;
+  color:#111;
+  font-weight:800;
+  padding:12px 22px;
+  font-size:22px;
+}
+
+/* bordered box */
+.music-card{
+  border:5px solid #f8c021;
+  padding:22px;
+  background:transparent;
+}
+
+.music-title{
+  color:#fff;
+  font-size:28px;
+  font-weight:800;
+}
+
+.music-sub{
+  color:#fff;
+  font-size:20px;
+}
+
+/* paragraph */
+.music-text{
+  color:#fff;
+  font-size:18px;
+  line-height:1.7;
+  margin-top:60px;   /* PSD spacing feel */
+}
+
+.footer-section{
+  overflow:hidden;
+  color:#fff;
+}
+
+.footer-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+/* logo */
+.footer-logo{
+  font-size:26px;
+  font-weight:800;
+}
+
+.footer-tagline{
+  color:#f8c021;
+  font-size:18px;
+  margin-bottom:30px;
+}
+
+/* open box */
+.open-box{
+  border:4px solid #f8c021;
+  padding:18px;
+  max-width:260px;
+}
+
+.open-title{
+  background:#f8c021;
+  color:#111;
+  font-weight:800;
+  text-align:center;
+  padding:6px;
+  margin-bottom:10px;
+}
+
+/* links */
+.footer-links{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.footer-links li{
+  margin-bottom:8px;
+  cursor:pointer;
+}
+
+/* address */
+.footer-address{
+  margin-bottom:10px;
+}
+
+/* social */
+.footer-social span{
+  background:#f8c021;
+  color:#111;
+  font-weight:700;
+  padding:6px 10px;
+  border-radius:4px;
+}
+
+  </style>
+</head>
+
+<body>
+
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+  <!-- indicators -->
+  <div class="carousel-indicators">
+    <button data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+    <button data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+    <button data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+  </div>
+
+  <div class="carousel-inner">
+
+    <!-- SLIDE 1 -->
+    <div class="carousel-item active position-relative">
+      <img src="image2/one.png" class="d-block w-100 hero-img">
+
+      <!-- overlay -->
+      <div class="hero-overlay"></div>
+
+      <!-- CONTENT -->
+      <div class="hero-content">
+
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container">
+            <a class="navbar-brand" href="#">
+              <img src="image2/Logo2.png" height="60">
+            </a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mainNav">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="btn nav-btn" href="#">Home</a></li>
+                <li class="nav-item"><a class="btn nav-btn" href="#">Menu</a></li>
+                <li class="nav-item"><a class="btn nav-btn active" href="#">Specials</a></li>
+                <li class="nav-item"><a class="btn nav-btn" href="#">About</a></li>
+                <li class="nav-item"><a class="btn nav-btn" href="#">Method</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- CENTER TEXT -->
+        <div class="container flex-grow-1 d-flex align-items-center">
+          <div class="row w-100 justify-content-center text-center">
+            <div class="col-lg-8">
+              <div class="opening-box">OPENING PARTY</div><br>
+              <div class="date-box">06/20/2020 – 7 P.M.</div>
+
+              <p class="mt-4 fs-5">
+                FOOD – MUSIC – FRIENDS – FUN
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="carousel-item">
+      <img src="image2/onethree.png" class="d-block w-100 hero-img">
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="carousel-item">
+      <img src="image2/oneto.png" class="d-block w-100 hero-img">
+    </div>
+
+  </div>
+
+  <!-- controls -->
+  <button class="carousel-control-prev" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+</div>
+
+<section class="menu-section position-relative">
+
+  <!-- background image -->
+  <img src="image2/two.png" class="menu-bg" alt="menu bg">
+
+  <!-- overlay content -->
+  <div class="menu-overlay container text-center">
+
+    <h2 class="menu-title mb-5">Menu</h2>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- CHICKEN -->
+      <div class="col-12 col-md-4">
+        <div class="menu-box">
+          <div class="menu-head">CHICKEN</div>
+          <div class="menu-body">
+            <div class="menu-item"><span>Chicken with salad</span><span>6,00</span></div>
+            <div class="menu-item"><span>The Gold Chicken</span><span>11,00</span></div>
+            <div class="menu-item"><span>Chicken with sauce</span><span>8,00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEEF -->
+      <div class="col-12 col-md-4">
+        <div class="menu-box">
+          <div class="menu-head">BEEF</div>
+          <div class="menu-body">
+            <div class="menu-item"><span>Prime Steak</span><span>6,00</span></div>
+            <div class="menu-item"><span>Steak Beef</span><span>11,00</span></div>
+            <div class="menu-item"><span>Entrecôte</span><span>8,00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORK -->
+      <div class="col-12 col-md-4">
+        <div class="menu-box">
+          <div class="menu-head">PORK</div>
+          <div class="menu-body">
+            <div class="menu-item"><span>Pork Cheeks</span><span>6,00</span></div>
+            <div class="menu-item"><span>Iberian Special Cut</span><span>11,00</span></div>
+            <div class="menu-item"><span>Pork Chop</span><span>8,00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDES -->
+      <div class="col-12 col-md-4">
+        <div class="menu-box">
+          <div class="menu-head">SLIDES</div>
+          <div class="menu-body">
+            <div class="menu-item"><span>Potato fries</span><span>6,00</span></div>
+            <div class="menu-item"><span>Mushrooms</span><span>11,00</span></div>
+            <div class="menu-item"><span>Roasted Broccoli</span><span>8,00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DRINKS -->
+      <div class="col-12 col-md-4">
+        <div class="menu-box">
+          <div class="menu-head">DRINKS</div>
+          <div class="menu-body">
+            <div class="menu-item"><span>Soft Drink</span><span>2,50</span></div>
+            <div class="menu-item"><span>Beer</span><span>4,50</span></div>
+            <div class="menu-item"><span>Wine Glass</span><span>4,50</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESSERTS -->
+      <div class="col-12 col-md-4">
+        <div class="menu-box">
+          <div class="menu-head">DESSERTS</div>
+          <div class="menu-body">
+            <div class="menu-item"><span>Cheesecake</span><span>6,00</span></div>
+            <div class="menu-item"><span>Tiramisu</span><span>5,00</span></div>
+            <div class="menu-item"><span>Chocolate Mousse</span><span>8,00</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="discount-section position-relative">
+  <!-- background -->
+  <img src="image2/three.png" class="discount-bg" alt="">
+
+  <!-- content -->
+  <div class="container position-relative z-2 py-5">
+    <div class="row align-items-center gy-4">
+
+      <!-- LEFT IMAGE -->
+      <div class="col-12 col-lg-6 text-center">
+        <img src="image2/grill.png" class="img-fluid discount-grill" alt="">
+      </div>
+
+      <!-- RIGHT TEXT -->
+      <div class="col-12 col-lg-6 text-lg-start text-center text-white">
+        <p class="mb-2 text-warning fs-5 ms-5">Get a</p>
+
+        <h2 class="fw-bold text-warning ms-5">
+          25% discount<br>
+          on your next dinner
+        </h2>
+
+        <a href="#" class="btn btn-warning fw-bold px-4 mt-3 ms-5">
+          Click Here
+        </a>
+
+        <div class="mt-4 ms-5">
+          <img src="image2/logo02.png" style="height:50px;">
+          <p class="text-warning fw-bold mt-2">The Meat Experience</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="special-section position-relative">
+  <!-- background -->
+  <img src="image2/four.png" class="special-bg" alt="">
+
+  <div class="container position-relative z-2 py-5">
+    
+    <!-- TOP CONTENT -->
+    <div class="row align-items-start gy-4">
+      
+      <!-- LEFT BOX -->
+      <div class="col-12 col-lg-5">
+        <div class="special-tag">SPECIAL OF THE MONTH</div>
+
+        <div class="special-box mt-2">
+          Lorem Ipsum
+        </div>
+      </div>
+
+      <!-- RIGHT TEXT -->
+      <div class="col-12 col-lg-7 text-white">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, nostrud exercitation ullamco laboris.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM IMAGE -->
+    <div class="row mt-5">
+      <div class="col-12 col-lg-6">
+        <img src="image2/special-meat.png" class="img-fluid" alt="">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="method-section position-relative">
+  <!-- background -->
+  <img src="image2/five.png" class="method-bg" alt="">
+
+  <div class="container position-relative py-5">
+    <div class="row align-items-center g-4">
+
+      <!-- LEFT IMAGE -->
+      <div class="col-12 col-lg-6 text-center">
+        <img src="image2/method-meat.png" class="img-fluid" alt="">
+      </div>
+
+      <!-- RIGHT CONTENT -->
+      <div class="col-12 col-lg-6">
+        <div class="method-title">Our Method</div>
+
+        <div class="method-box mt-3">
+          Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+          consectetur, adipisci velit, sed quia non numquam.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="music-section position-relative">
+  <!-- background -->
+  <img src="image2/six.png" class="music-bg" alt="">
+
+  <div class="container position-relative py-5">
+    <div class="row align-items-start g-5">
+
+      <!-- LEFT CARD -->
+      <div class="col-12 col-lg-4">
+        <div class="music-tag">LIVE MUSIC</div>
+
+        <div class="music-card mt-2">
+          <h3 class="music-title mb-1">Jazz Night</h3>
+          <p class="music-sub mb-0">Every Friday</p>
+        </div>
+      </div>
+
+      <!-- RIGHT TEXT -->
+      <div class="col-12 col-lg-5">
+        <p class="music-text">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer-section position-relative">
+  <!-- background -->
+  <img src="image2/seven.png" class="footer-bg" alt="footer bg">
+
+  <div class="container position-relative py-5">
+    <div class="row gy-4 text-center text-lg-start">
+
+      <!-- LOGO + TAGLINE -->
+      <div class="col-12">
+        <div class="footer-logo mb-2">GRILL HOUSE</div>
+        <div class="footer-tagline">– The Meat Experience –</div>
+      </div>
+
+      <!-- OPEN BOX -->
+      <div class="col-12 col-lg-4">
+        <div class="open-box mx-auto mx-lg-0">
+          <div class="open-title">OPEN</div>
+          <p class="mb-1">Mon - Thurs: 12AM - 11PM</p>
+          <p class="mb-0">Fri - Sun: 9AM - 12PM</p>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div class="col-6 col-lg-2">
+        <ul class="footer-links">
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <ul class="footer-links">
+          <li>Blog</li>
+          <li>Cookies</li>
+          <li>Site Map</li>
+        </ul>
+      </div>
+
+      <!-- ADDRESS + SOCIAL -->
+      <div class="col-12 col-lg-4">
+        <p class="footer-address">Madison Street, 30 - City</p>
+
+        <div class="footer-social d-flex justify-content-center justify-content-lg-start gap-3">
+          <span>IG</span>
+          <span>FB</span>
+          <span>TW</span>
+          <span>YT</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
