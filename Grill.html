@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grill-House</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    #two-img {
+      height: 800px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #four-img {
+      height: 900px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #three-img {
+      height: 700px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #five-img {
+      height: 1000px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    .menu-section .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .carousel-item img {
+      height: 695px;
+      overflow: hidden;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .carousel-caption {
+      top: 0;
+      bottom: 0;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .carousel-caption .navbar {
+      width: 100%;
+    }
+
+    .opening-content {
+      margin-top: 200px;
+      text-align: center;
+    }
+
+    .opening-box {
+      display: inline-block;
+      background-color: #f8c021;
+      color: #000;
+      padding: 20px 50px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 25px;
+    }
+
+    .date-box {
+      display: inline-block;
+      border: 3px solid #f8c021;
+      padding: 10px 60px;
+      margin-top: 6px;
+      font-size: 18px;
+      letter-spacing: 2px;
+      background-color: transparent;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .sub-text {
+      margin-top: 25px;
+      letter-spacing: 4px;
+      font-size: 20px;
+    }
+
+
+    .nav-btn {
+      border: 2px solid #f8c021;
+      color: #f8c021 !important;
+      background: transparent;
+      padding: 6px 32px;
+      margin-left: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-btn.active,
+    .nav-btn:hover {
+      background-color: #f8c021;
+      color: #000 !important;
+    }
+
+    .menu-section {
+      top: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .menu-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      color: white;
+    }
+
+    .menu-title {
+      font-size: 40px;
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+      position: relative;
+      bottom: 50px;
+      text-shadow:
+        0px 4px 6px rgba(0, 0, 0, 0.9),
+        0px 8px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .menu-grid {
+      max-width: 900px;
+      /* boxes width limit */
+    }
+
+    .menu-box {
+      background-color: transparent;
+      padding: 5px 5px;
+      color: #000;
+      font-weight: 600;
+      font-size: 14px;
+      position: relative;
+      top: 50px;
+      border: 1px solid #f8c021;
+
+    }
+
+    .menu-box h5 {
+      border: 2px solid #000;
+      padding: 4px;
+      margin-bottom: 8px;
+      font-size: 15px;
+      background-color: #f8c021;
+      height: 30px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      background-color: transparent;
+      padding: 5px;
+      color: white;
+    }
+
+    .discount-section {
+      position: relative;
+    }
+
+    .discount-content {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      transform: translateY(-50%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .discount-content .small {
+      color: #f8c021;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      pointer-events: auto;
+    }
+
+    .discount-big {
+      color: #f8c021;
+      font-size: 48px;
+      font-weight: 800;
+      margin: 6px 0;
+      pointer-events: auto;
+    }
+
+    .discount-sub {
+      color: #fff;
+      font-size: 22px;
+      margin-bottom: 18px;
+      pointer-events: auto;
+      font-weight: bold;
+    }
+
+    .discount-content .btn {
+      pointer-events: auto;
+      background: #f8c021;
+      color: #111;
+      border: none;
+      font-weight: bold !important;
+    }
+
+    .meat-text {
+      color: #f8c021;
+      font-size: 30px;
+      position: relative;
+      top: 170px;
+      font-weight: bold;
+      text-shadow:
+        0px 4px 6px rgba(0, 0, 0, 0.9),
+        0px 8px 10px rgba(73, 73, 73, 0.9);
+    }
+
+
+    .special-section {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      min-height: 1100px;
+    }
+
+    .special-section .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+
+    .special-overlay {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px 20px 40px;
+      box-sizing: border-box;
+    }
+
+
+    .special-row {
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+
+    .special-left {
+      flex: 0 0 44%;
+      min-width: 240px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .special-left .title-strip {
+      display: inline-block;
+      background-color: #f8c021;
+      color: #111;
+      font-weight: 800;
+      padding: 12px 20px;
+      letter-spacing: 1px;
+      font-size: 18px;
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25) inset;
+      text-align: center;
+    }
+
+    .special-left .boxed {
+      border: 4px solid #f8c021;
+      padding: 24px 16px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 28px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0);
+    }
+
+
+    .special-right {
+      flex: 1;
+      color: #fff;
+      line-height: 1.6;
+      font-size: 16px;
+      padding-top: 8px;
+    }
+
+
+    .method-section {
+      position: relative;
+      width: 100%;
+      min-height: 1409px;
+      overflow: hidden;
+    }
+
+    .method-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+
+    .method-overlay {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 500px 40px 40px 100px;
+      box-sizing: border-box;
+    }
+
+    .method-row {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+
+    .method-left {
+      flex: 0 0 45%;
+    }
+
+    .method-meat-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+
+    .method-right {
+      flex: 1;
+      color: #fff;
+    }
+
+
+    .method-title {
+      display: inline-block;
+      background: #f8c021;
+      padding: 12px 20px;
+      font-weight: 800;
+      font-size: 22px;
+      color: #111;
+      margin-bottom: 18px;
+    }
+
+
+    .method-box {
+      border: 4px solid #f8c021;
+      padding: 20px 18px;
+      font-size: 17px;
+      line-height: 1.6;
+      color: #fff;
+      max-width: 380px;
+      background: rgba(0, 0, 0, 0);
+    }
+
+    .music-section {
+      position: relative;
+      width: 100%;
+      min-height: 750px;
+      overflow: hidden;
+    }
+
+    /* background image */
+    .music-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    
+    .music-overlay {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px 40px 60px;
+     
+      box-sizing: border-box;
+    }
+
+    .music-row {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+    }
+
+    
+    .music-left {
+      flex: 0 0 340px;
+    }
+
+    .music-tag {
+      background: #f8c021;
+      color: #111;
+      font-weight: 800;
+      font-size: 26px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 14px 26px;
+    }
+
+    .music-card {
+      border: 6px solid #f8c021;
+      padding: 28px 26px 24px;
+      background: rgba(0, 0, 0, 0);
+      
+    }
+
+    
+    .music-title {
+      color: #fff;
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    .music-sub {
+      color: #fff;
+      font-size: 24px;
+      margin-top: 6px;
+    }
+
+   
+    .music-right {
+      flex: 1;
+      color: #fff;
+      font-size: 20px;
+      line-height: 1.7;
+      max-width: 480px;
+      padding-top: 60px;
+     
+    }
+
+    .site-footer {
+      background: #222;
+     
+      color: #fff;
+      padding: 60px 0 40px;
+      position: relative;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-logo {
+      height: 72px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .footer-heading {
+      color: #f8c021;
+      font-weight: 800;
+      font-size: 24px;
+      margin-bottom: 18px;
+      text-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    
+    .open-box {
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    .open-tag {
+      background: #f8c021;
+      color: #111;
+      font-weight: 800;
+      padding: 10px 18px;
+      display: inline-block;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .open-times {
+      border: 4px solid #f8c021;
+      margin-top: 8px;
+      padding: 10px 12px;
+      color: #fff;
+      max-width: 260px;
+      background: rgba(0, 0, 0, 0.05);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* nav links center */
+    .footer-nav .nav-list {
+      padding: 0;
+      margin: 12px 0 0;
+      column-count: 2;
+      column-gap: 40px;
+    }
+
+    .footer-nav .nav-list li {
+      margin: 8px 0;
+    }
+
+    .footer-nav .nav-list a {
+      color: rgba(255, 255, 255, 0.95);
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .footer-nav .nav-list a:hover {
+      color: #f8c021;
+    }
+
+    .address {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .socials i {
+      font-size: 20px;
+      color: #111;
+      background: #f8c021;
+      padding: 8px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .socials a {
+      text-decoration: none;
+    }
+
+    .socials span {
+      color: #f8c021;
+      font-weight: 700;
+      margin-left: 8px;
+      font-size: 18px;
+    }
+
+    @media (max-width: 576px) {
+      #two-img {
+        height: 1500px;
+        overflow: hidden;
+        object-fit: cover;
+      }
+
+      .menu-title {
+        position: relative;
+        top: 15px;
+      }
+
+      .menu-box {
+        position: relative;
+        top: 10px;
+      }
+
+      .discount-content .small {
+        font-size: 20px;
+        margin-right: 50px;
+        font-weight: bold;
+      }
+
+      .discount-big {
+        font-size: 35px;
+        margin-right: 50px;
+      }
+
+      .discount-sub {
+        font-size: 17px;
+        margin-right: 50px;
+      }
+
+      .discount-content .btn {
+        margin-right: 50px;
+      }
+
+      .meat-text {
+        font-size: 20px;
+        margin-right: 50px;
+      }
+
+      .music-left {
+        flex: 0 0 100%;
+        width: 100%;
+      }
+
+      .music-tag {
+        font-size: 20px;
+        padding: 10px 16px;
+      }
+
+      .music-card {
+        padding: 20px 18px;
+      }
+
+      .music-title {
+        font-size: 24px;
+      }
+
+      .music-sub {
+        font-size: 18px;
+      }
+
+      .method-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .method-left,
+      .method-right {
+        flex: 0 0 100%;
+        width: 100%;
+      }
+
+      .method-overlay {
+        padding: 80px 12px 40px;
+      }
+
+      .method-title {
+        font-size: 18px;
+        padding: 10px 14px;
+      }
+
+      .method-box {
+        padding: 16px;
+        font-size: 15px;
+      }
+
+      .special-overlay {
+        padding: 40px 16px;
+      }
+
+      .special-row {
+        flex-direction: column;
+        gap: 18px;
+        align-items: flex-start;
+      }
+
+      .special-left {
+
+        width: 100%;
+        flex: unset;
+      }
+
+      .special-right {
+        width: 100%;
+      }
+
+      .special-left .boxed {
+        font-size: 22px;
+        padding: 18px 12px;
+      }
+
+      .special-left .title-strip {
+        font-size: 16px;
+        padding: 10px 14px;
+      }
+
+      .footer-nav .nav-list {
+        column-count: 1;
+        text-align: left;
+      }
+
+      .footer-right,
+      .footer-left,
+      .footer-nav {
+        text-align: left !important;
+      }
+
+      .footer-heading {
+        font-size: 20px;
+      }
+
+      .open-times {
+        max-width: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container-fluid p-0">
+
+    <div class="carousel slide" id="slider1" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-slide-to="0" data-bs-target="#slider1" class="active"></button>
+        <button type="button" data-bs-slide-to="1" data-bs-target="#slider1"></button>
+        <button type="button" data-bs-slide-to="2" data-bs-target="#slider1"></button>
+      </div>
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="image2/one.png" alt=".." height="500px">
+
+          <div class="carousel-caption d-md-block">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                  <img src="image2/Logo2.png" alt="Grill House" style="height: 75px;">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="mainMenu">
+                  <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="btn nav-btn" href="#">Home</a></li>
+                    <li class="nav-item"><a class="btn nav-btn" href="#">Menu</a></li>
+                    <li class="nav-item"><a class="btn nav-btn active" href="#">Specials</a></li>
+                    <li class="nav-item"><a class="btn nav-btn" href="#">About</a></li>
+                    <li class="nav-item"><a class="btn nav-btn" href="#">Method</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
+            <div class="opening-content">
+              <div class="opening-box">OPENING PARTY</div><br>
+              <div class="date-box">06/01/2026 - 7 P.M.</div>
+              <div class="sub-text">FOOD - MUSIC - FRIENDS - FUN</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img class="d-block w-100" src="image2/onethree.png" alt=".." height="500px">
+        </div>
+
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <img class="d-block w-100" src="image2/oneto.png" alt=".." height="500px">
+        </div>
+
+      </div>
+      <!-- End carousel-inner -->
+
+      <button type="button" class="carousel-control-prev" data-bs-target="#slider1" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+
+      <button type="button" class="carousel-control-next" data-bs-target="#slider1" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container-fluid p-0 menu-section">
+    <img id="two-img" src="image2/two.png" alt="">
+    <div class="menu-overlay text-center">
+      <h2 class="menu-title">Menu</h2>
+
+
+      <div class="row justify-content-center mt-2 g-5 menu-boxes">
+
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="menu-box">
+            <h5>CHICKEN</h5>
+            <div class="menu-item">Chicken with salad <span>6,00</span></div>
+            <div class="menu-item">The Gold Chicken <span>11,00</span></div>
+            <div class="menu-item">Chicken whit sauce <span>8,00</span></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="menu-box">
+            <h5>BEEF</h5>
+            <div class="menu-item">Prime Steak <span>6,00</span></div>
+            <div class="menu-item">Steak Beef <span>11,00</span></div>
+            <div class="menu-item">Entrecôte <span>8,00</span></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="menu-box">
+            <h5>PORK</h5>
+            <div class="menu-item">Pork Cheeks <span>6,00</span></div>
+            <div class="menu-item">Iberian Special Cut <span>11,00</span></div>
+            <div class="menu-item">Pork Chop <span>8,00</span></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="menu-box">
+            <h5>SLIDES</h5>
+            <div class="menu-item">Potato fries <span>6,00</span></div>
+            <div class="menu-item">Mushrooms <span>11,00</span></div>
+            <div class="menu-item">Roasted Brocoli <span>8,00</span></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="menu-box">
+            <h5>DRINKS</h5>
+            <div class="menu-item">Soft Drink <span>2,50</span></div>
+            <div class="menu-item">Beer <span>4,50</span></div>
+            <div class="menu-item">Wine Glass <span>4,50</span></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="menu-box">
+            <h5>DESSERTS</h5>
+            <div class="menu-item">Cheesecake <span>6,00</span></div>
+            <div class="menu-item">Tiramisu <span>5,00</span></div>
+            <div class="menu-item">Chocolate Mousse <span>8,00</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <div class="container-fluid p-0 discount-section">
+    <img id="three-img" src="image2/three.png" alt="">
+    <div class="discount-content">
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-lg-5 text-end">
+            <div class="small">Get a</div>
+            <h2 class="discount-big">25% discount</h2>
+            <p class="discount-sub">on your next dinner</p>
+            <a href="#" class="btn btn-warning fw-bold px-4">Click Here</a>
+            <p class="meat-text">The Meat Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Special section -->
+  <section class="special-section">
+
+    <img class="bg" src="image2/four.png" alt="special background">
+    <div class="special-overlay">
+      <div class="special-row">
+
+        <div class="special-left">
+          <div class="title-strip">SPECIAL OF THE MONTH</div>
+          <div class="boxed">Lorem Ipsum</div>
+        </div>
+
+        <div class="special-right">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil facilis error atque quam
+            nostrum hic quaerat aliquam odit expedita illo. Praesentium, nobis. Eligendi, officia?
+            Repellat, numquam. Maiores, asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="method-section">
+    <img class="method-bg" src="image2/five.png" alt="method background">
+
+    <div class="method-overlay">
+      <div class="method-row">
+
+        <div class="method-left">
+          <img src="image2/method-meat.png" class="method-meat-img" alt="">
+        </div>
+
+        <div class="method-right">
+          <div class="method-title">Our Method</div>
+
+          <div class="method-box">
+            Neque porro quisquam est, qui dolorem ipsum quia
+            dolor sit amet, consectetur, adipisci velit, sed quia
+            non numquam.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="music-section">
+   
+    <img src="image2/six.png" alt="Live music background" class="music-bg">
+
+    
+    <div class="music-overlay">
+      <div class="music-row">
+
+        <div class="music-left">
+          <div class="music-tag">LIVE MUSIC</div>
+
+          <div class="music-card">
+            <div class="music-title">Jazz Night</div>
+            <div class="music-sub">Every Friday</div>
+          </div>
+        </div>
+
+        <div class="music-right">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row align-items-start gy-4">
+
+        <div class="col-12 col-md-4 footer-left text-md-start">
+          <img src="image2/Logo2.png" alt="Grill House" class="footer-logo">
+          <div class="footer-heading">-The Meat Experience-</div>
+
+          <div class="open-box mt-3">
+            <div class="open-tag">OPEN</div>
+            <div class="open-times">
+              <div>Mon.-Thurs.: 12AM - 11PM</div>
+              <div>Fri.-Sun.: 9AM - 12PM</div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="col-12 col-md-4 footer-nav text-md-center">
+          <ul class="nav-list list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Cookies</a></li>
+            <li><a href="#">Site Map</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-4 footer-right text-md-end">
+          <div class="address">Madison Street, 30 - City</div>
+
+          <div class="socials mt-3">
+            <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="me-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="me-2"><i class="bi bi-youtube"></i></a>
+            <span class="ms-2">@Grill_House</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
